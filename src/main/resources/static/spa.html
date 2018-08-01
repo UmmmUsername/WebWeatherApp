@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+<script src="js/weather.js"></script>
+
+<h1>Таблица AngularJS</h1>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <table>
+        <tr>
+            <td>Страна</td>
+            <td>
+                <select ng-options="country as country for country in countries"
+                        ng-model="country" ng-change="updateCountry()" class="weather-select"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>Город:</td>
+            <td>
+                <select ng-options="city as city for city in cities"
+                        ng-model="city" ng-change="updateCity()" class="weather-select"></select>
+            </td>
+        </tr>
+    </table>
+
+    <table class="weather-table" ng-show="weathers.length > 0">
+        <tr>
+        <td>Время</td>
+        <td>Температура</td>
+        <td>Скорость ветра, м/с</td>
+        <td>Эффективная температура</td>
+        <td>Влажность, %</td>
+        <td>Давление</td>
+        </tr>
+
+        <tr ng-repeat="weather in weathers">
+            <td>{{ weather.time }}</td>
+            <td>{{ weather.temperature | number : 1 }}</td>
+            <td>{{ weather.windSpeed | number : 0 }}</td>
+            <td>{{ weather.windChill | number : 1 }}</td>
+            <td>{{ weather.humidity | number : 0 }}</td>
+            <td>{{ weather.pressure | number : 0 }}</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

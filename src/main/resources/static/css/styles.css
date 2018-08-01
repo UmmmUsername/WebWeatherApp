@@ -1,0 +1,10 @@
+table.weather-table, table.weather-table td {
+    border : 2px;
+    border-color : black;
+    border-style : solid;
+}
+
+select.weather-select {
+    height : 20px;
+    width : 130px;
+}

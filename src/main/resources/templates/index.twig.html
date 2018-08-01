@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<table class="weather-table">
+    <tr>
+        <td>Страна</td>
+        <td>Город</td>
+        <td>Время</td>
+        <td>Температура</td>
+        <td>Скорость ветра, м/с</td>
+        <td>Эффективная температура</td>
+        <td>Влажность, %</td>
+        <td>Давление</td>
+    </tr>
+    {% for country in countries %}
+    {% for city in country.cities %}
+    {% for weather in city.weather %}
+    <tr>
+        <td> {= country.name =}</td>
+        <td> {= city.name =}</td>
+        <td> {= weather.time =}</td>
+        <td> {= weather.temperature =}</td>
+        <td> {= weather.windSpeed =}</td>
+        <td> {= weather.windChill =}</td>
+        <td> {= weather.humidity =}</td>
+        <td> {= weather.pressure =}</td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+</table>
+</body>
+</html>
